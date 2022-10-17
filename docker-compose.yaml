@@ -3,7 +3,7 @@ version: "3.3"
 services:
 
   openvscode:
-    image: lscr.io/linuxserver/openvscode-server:latest
+    image: gitpod/openvscode-server 
     container_name: openvscode
     environment:
       - PUID=1000
@@ -14,9 +14,12 @@ services:
       - SUDO_PASSWORD=p4ssw0rd #optional
       - SUDO_PASSWORD_HASH= #optional
     volumes:
-      - ./appdata/config:/config
+      - '$(pwd):/home/workspace:cached'
     ports:
       - "8200:3000"
     restart: unless-stopped
+    
+
+ 
 
     
